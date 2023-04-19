@@ -105,27 +105,30 @@ button:hover {
         const submitButton = document.getElementById("submit-button");
         if (submitButton) {
             submitButton.addEventListener("click", function() {
-        // Get the input URL
-        var inputUrl = document.getElementById("input-url").value;
-        
-        // Check if the URL contains a "v" parameter
-        var match = inputUrl.match(/[\?&]v=([^&]*)/);
-        if (match) {
-          // Get the value of the "v" parameter
-          var vValue = match[1];
-          
-          // Build the new URL
-          var newUrl = "https://www.captionsgrabber.com/8302/display-captions-as-text.00.php?id=" + vValue + "&language=en&type=None";
-          
-          // Set the new URL in the output textbox
-          document.getElementById("output-url").value = newUrl;
-          
-          // Add a click event listener to the button that opens the new URL in a new tab
-          document.getElementById("open-url-button").addEventListener("click", function() {
-            window.open(newUrl, "_blank");
-          });
-        }
+              // Get the input URL
+              var inputUrl = document.getElementById("input-url").value;
+              
+              // Check if the URL contains a "v" parameter
+              var match = inputUrl.match(/[\?&]v=([^&]*)/);
+              if (match) {
+                // Get the value of the "v" parameter
+                var vValue = match[1];
+                
+                // Build the new URL
+                var newUrl = "https://www.captionsgrabber.com/8302/display-captions-as-text.00.php?id=" + vValue + "&language=en&type=None";
+                
+                // Set the new URL in the output textbox
+                document.getElementById("output-url").value = newUrl;
+                
+                // Add a click event listener to the button that opens the new URL in a new tab
+                document.getElementById("open-url-button").addEventListener("click", openCaptionsGrabberUrlInTab);
+              }
             })
+        }
+
+        function openCaptionsGrabberUrlInTab() {
+          captionsGrabberUrlToOpen = document.getElementById("output-url").value;
+          window.open(captionsGrabberUrlToOpen, "captionsGrabber");
         }
     </script>
 
