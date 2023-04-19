@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prepend Prompt to Text</title>
+	<style>
+    /* Style the container */
+    body {
+        background-color: rgba(37, 27, 55, 0.8);
+    }
+
+    html {
+      background: url("C:\\Users\\Prime Time Pauly G\\Pictures\\Downloaded Lock Screens\\2023 Q2\\landscape\\663e9f5.jpg") no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Style the textarea container */
+    .textarea-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    /* Style the textarea */
+    .textarea {
+        margin-top: 15px;
+      width: 905px;
+      height: 330px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      background-color: #222;
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: cyan;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style the button */
+    .button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #f94d5c;
+      color: white;
+      cursor: pointer;
+      border-radius: 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Change button style on hover */
+    .button:hover {
+      background-color: #ff6b78;
+    }
+
+    /* Style the copied text container */
+    .copied-text-container {
+      background-color: #000;
+      color: #E11299;
+      padding: 20px;
+      border-style: solid;
+      border-color: #B5F1CC;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: normal;
+      text-align: center;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+	<div class="container">
+		<div class="textarea-container">
+			<textarea class="textarea"></textarea>
+			<button class="button">Copy to Clipboard</button>
+		</div>
+		<div class="copied-text-container"></div>
+	</div>
+	
+	<script>
+		const textarea = document.querySelector('.textarea');
+		const button = document.querySelector('.button');
+		const copiedTextContainer = document.querySelector('.copied-text-container');
+		
+		button.addEventListener('click', () => {
+			const textToPrepend = 'Please add punctuation, capitalization, and paragraph breaks to this: ';
+			const textToCopy = textToPrepend + textarea.value;
+			
+			// Prepend text to the textarea
+			textarea.value = textToPrepend + textarea.value;
+			
+			// Copy the textarea contents to the clipboard
+			textarea.select();
+			document.execCommand('copy');
+			
+			// Display the copied text in the separate div
+			copiedTextContainer.textContent = 'Copied Text: ' + textToCopy;
+		});
+	</script>
+</body>
+</html>
